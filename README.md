@@ -1,2 +1,2 @@
 # ELK_stack
-fully running ELK stack
+fully running containerized  ELK stack
