@@ -65,7 +65,8 @@ services:
     hostname: logstash
     image: "mehmetyazicioglu/logstash:${ELASTIC_VERSION}"
     volumes:
-      - ${ES_MOUNT_DRIVE}/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - /usr/share/logstash/config/logstash.yml:${ES_MOUNT_DRIVE}/logstash/config/logstash.yml
+ #     - ${ES_MOUNT_DRIVE}/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ${ES_MOUNT_DRIVE}/logstash/pipeline:/usr/share/logstash/pipeline
     ports:
       - "5044:5044"
