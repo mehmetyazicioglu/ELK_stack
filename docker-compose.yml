@@ -8,8 +8,8 @@ services:
   elasticsearch:
     container_name: elasticsearch
     hostname: elasticsearch
-    image: "docker.elastic.co/elasticsearch/elasticsearch:7.14.0"
-    #    image: "mehmetyazicioglu/elasticsearch:${ELASTIC_VERSION}"
+    #image: "docker.elastic.co/elasticsearch/elasticsearch:7.14.0"
+    image: "mehmetyazicioglu/elasticsearch:${ELASTIC_VERSION}"
     environment:
       - cluster.name=es-cluster
       - node.name=es-node-1
@@ -65,8 +65,8 @@ services:
     hostname: logstash
     image: "mehmetyazicioglu/logstash:${ELASTIC_VERSION}"
     volumes:
-      - './logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml'
-      - './logstash/pipeline:/usr/share/logstash/pipeline'
+      - ${ES_MOUNT_DRIVE}:/usr/share/logstash/config/logstash.yml
+      - ${ES_MOUNT_DRIVE}:/usr/share/logstash/pipeline
     ports:
       - "5044:5044"
       - "5000:5000/tcp"
