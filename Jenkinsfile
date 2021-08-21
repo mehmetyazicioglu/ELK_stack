@@ -1,4 +1,5 @@
 pipeline {
+    agent any
   stages {
       stage('Clone repository') {               
       steps {       
@@ -7,9 +8,9 @@ pipeline {
       } 
     stage('Docker-compose up') {
       steps{
-        script {
-	 docker-compose up -d
-        }
+          script{
+        sh "docker-compose up -d"
+          }
       }
     }
 }
